@@ -47,7 +47,7 @@ const experience = [
   {
     role: "Student Worker, OIT Networking",
     organization: "University of Tennessee, Knoxville",
-    period: "May 2026–present",
+    period: "May 2026–Present",
   },
   {
     role: "Student Intern, IT Assistant",
@@ -60,7 +60,7 @@ function LinkRow({ link }: { link: LinkItem }) {
   return (
     <a
       aria-label={link.label ?? link.value}
-      className="contact-link"
+      className="contact-link group"
       href={link.url}
       rel={link.external ? "noreferrer" : undefined}
       target={link.external ? "_blank" : undefined}
@@ -82,7 +82,7 @@ function LinkRow({ link }: { link: LinkItem }) {
       ) : (
         <span aria-hidden="true" />
       )}
-      <span>{link.value}</span>
+      <span className="underline-offset-4 group-hover:underline group-focus-visible:underline">{link.value}</span>
     </a>
   );
 }
@@ -111,10 +111,11 @@ export default function Home() {
             <ol className="mt-2 ml-4 space-y-4">
               {experience.map((item) => (
                 <li key={`${item.organization}-${item.period}`}>
-                  <p className="font-medium">{item.role}</p>
-                  <p className="text-sm text-foreground/70">
-                    {item.organization} · {item.period}
-                  </p>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <p className="font-medium">{item.role}</p>
+                    <p className="shrink-0 text-right text-sm text-foreground/70">{item.period}</p>
+                  </div>
+                  <p className="text-sm text-foreground/70">{item.organization}</p>
                 </li>
               ))}
             </ol>

@@ -70,7 +70,7 @@
   }
 
   .contact-link {
-    @apply grid w-fit grid-cols-[8.5rem_auto] items-center gap-2 underline-offset-4 hover:underline focus-visible:underline;
+    @apply grid w-fit grid-cols-[8.5rem_auto] items-center gap-2;
   }
 
   .contact-label {
