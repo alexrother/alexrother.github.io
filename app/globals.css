@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -10,31 +10,28 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 @layer base {
+  html,
+  body {
+    @apply h-full overflow-hidden;
+  }
+
   body {
     @apply bg-background font-sans text-foreground;
   }
 
   header {
-    @apply -mx-6 mb-6 shrink-0 border-b border-foreground/20 px-6 pb-3;
+    @apply -mx-6 mb-6 shrink-0 px-6 pb-3;
   }
 
   h1 {
-    @apply text-4xl font-semibold;
+    @apply text-3xl font-semibold;
   }
 
   h2 {
-    @apply text-3xl font-semibold;
+    @apply text-xl font-semibold;
   }
 
   h3 {
@@ -65,10 +62,6 @@
     @apply not-italic;
   }
 
-  section a:not(.contact-link) {
-    @apply block w-fit underline-offset-4 hover:underline focus-visible:underline;
-  }
-
 }
 
 @layer components {
@@ -84,11 +77,11 @@
     @apply inline-flex items-center gap-2;
   }
 
-  .site-ticker {
-    @apply -mx-6 shrink-0 overflow-hidden border-t border-foreground/20 bg-background/95 py-3 backdrop-blur;
+  .bookmark-row {
+    @apply overflow-hidden;
   }
 
-  .site-ticker-track {
+  .bookmark-track {
     display: flex;
     width: max-content;
     animation: site-ticker-scroll 180s linear infinite;
@@ -106,13 +99,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-ticker-track {
+  .bookmark-track {
     animation: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .github-logo {
-    filter: invert(1);
   }
 }
