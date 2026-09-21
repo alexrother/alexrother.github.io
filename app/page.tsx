@@ -74,7 +74,9 @@ export default function Home() {
       </head>
 
       <header>
-        <h1>alex rother</h1>
+        <div className="mx-auto w-full max-w-2xl">
+          <h1>alex rother</h1>
+        </div>
       </header>
 
       <div className="mx-auto w-full max-w-2xl space-y-8">
