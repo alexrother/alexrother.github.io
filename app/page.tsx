@@ -68,7 +68,7 @@ const getFaviconUrl = (url: string) =>
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-6 pb-16">
+    <main className="flex h-screen flex-col overflow-hidden px-6">
       <head>
         <title>alexrother.com</title>
       </head>
@@ -79,77 +79,79 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-2xl space-y-8">
-        <section>
-          <h2>about</h2>
-          <p className="mt-2">
-            UTK computer science undergraduate (2027) interested in systems programming, web development,
-            networking, cybersecurity.
-          </p>
-        </section>
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        <div className="mx-auto w-full max-w-2xl space-y-8">
+          <section>
+            <h2>about</h2>
+            <p className="mt-2">
+              I am a Computer Science Undergraduate at the University of Tennessee, Knoxville, graduating in Spring 2027. I am interested in systems
+              programming, cybersecurity, computer networking, and web development.
+            </p>
+          </section>
 
-        <address>
-          <h2>contact</h2>
-          <div className="contact-links mt-2">
-            {contacts.map((contact) => (
+          <address>
+            <h2>contact</h2>
+            <div className="contact-links mt-2">
+              {contacts.map((contact) => (
+                <a
+                  aria-label={contact.label ?? contact.value}
+                  className="contact-link"
+                  href={contact.url}
+                  key={contact.url}
+                >
+                  {contact.label ? (
+                    <span className="contact-label">
+                      <Image
+                        alt=""
+                        height={20}
+                        src={contact.icon}
+                        unoptimized
+                        width={20}
+                      />
+                      {contact.label}
+                    </span>
+                  ) : (
+                    <span aria-hidden="true" />
+                  )}
+                  <span>{contact.value}</span>
+                </a>
+              ))}
+            </div>
+          </address>
+
+          <section>
+            <div className="contact-links">
               <a
-                aria-label={contact.label ?? contact.value}
                 className="contact-link"
-                href={contact.url}
-                key={contact.url}
+                href="https://github.com/alexrother"
+                rel="noreferrer"
+                target="_blank"
               >
-                {contact.label ? (
-                  <span className="contact-label">
-                    <Image
-                      alt=""
-                      height={20}
-                      src={contact.icon}
-                      unoptimized
-                      width={20}
-                    />
-                    {contact.label}
-                  </span>
-                ) : (
-                  <span aria-hidden="true" />
-                )}
-                <span>{contact.value}</span>
+                <span className="contact-label">
+                  <Image
+                    alt=""
+                    className="github-logo"
+                    height={20}
+                    src="https://cdn.simpleicons.org/github"
+                    unoptimized
+                    width={20}
+                  />
+                  github
+                </span>
+                <span>github.com/alexrother</span>
               </a>
-            ))}
-          </div>
-        </address>
-
-        <section>
-          <div className="contact-links">
-            <a
-              className="contact-link"
-              href="https://github.com/alexrother"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span className="contact-label">
-                <Image
-                  alt=""
-                  className="github-logo"
-                  height={20}
-                  src="https://cdn.simpleicons.org/github"
-                  unoptimized
-                  width={20}
-                />
-                github
-              </span>
-              <span>github.com/alexrother</span>
-            </a>
-            <a
-              className="contact-link"
-              href="https://github.com/qqalex"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span aria-hidden="true" />
-              <span>github.com/qqalex</span>
-            </a>
-          </div>
-        </section>
+              <a
+                className="contact-link"
+                href="https://github.com/qqalex"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span aria-hidden="true" />
+                <span>github.com/qqalex</span>
+              </a>
+            </div>
+          </section>
+        </div>
       </div>
 
       <footer className="site-ticker" aria-label="Useful links">

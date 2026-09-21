@@ -26,7 +26,7 @@
   }
 
   header {
-    @apply -mx-6 mb-6 border-b border-foreground/20 px-6 pb-3;
+    @apply -mx-6 mb-6 shrink-0 border-b border-foreground/20 px-6 pb-3;
   }
 
   h1 {
@@ -85,7 +85,7 @@
   }
 
   .site-ticker {
-    @apply fixed inset-x-0 bottom-0 overflow-hidden border-t border-foreground/20 bg-background/95 py-3 backdrop-blur;
+    @apply -mx-6 shrink-0 overflow-hidden border-t border-foreground/20 bg-background/95 py-3 backdrop-blur;
   }
 
   .site-ticker-track {
