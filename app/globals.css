@@ -27,11 +27,11 @@
   }
 
   h1 {
-    @apply text-3xl font-semibold;
+    @apply text-2xl font-semibold tracking-tight;
   }
 
   h2 {
-    @apply text-xl font-semibold;
+    @apply text-base font-semibold;
   }
 
   h3 {
@@ -51,7 +51,7 @@
   }
 
   p {
-    @apply max-w-prose;
+    @apply max-w-prose leading-7;
   }
 
   ul {

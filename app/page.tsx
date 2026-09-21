@@ -4,8 +4,6 @@ type LinkItem = {
   label?: string;
   value: string;
   url: string;
-  icon?: string;
-  iconClassName?: string;
   external?: boolean;
 };
 
@@ -14,13 +12,11 @@ const contacts: LinkItem[] = [
     label: "phone",
     value: "(615) 763-3279",
     url: "tel:+16157633279",
-    icon: "/icons/phone.svg",
   },
   {
     label: "email",
     value: "alex@alexrother.com",
     url: "mailto:alex@alexrother.com",
-    icon: "/icons/email.svg",
   },
   {
     value: "alex@eecs.utk.edu",
@@ -33,7 +29,6 @@ const githubProfiles: LinkItem[] = [
     label: "github",
     value: "github.com/alexrother",
     url: "https://github.com/alexrother",
-    icon: "/icons/github.webp",
     external: true,
   },
   {
@@ -46,43 +41,49 @@ const githubProfiles: LinkItem[] = [
 const experience = [
   {
     role: "Student Worker, OIT Networking",
-    organization: "University of Tennessee, Knoxville",
+    organization: "University of Tennessee, Knoxville, Tennessee",
     period: "May 2026–Present",
   },
   {
     role: "Student Intern, IT Assistant",
-    organization: "Le Jardin Academy",
-    period: "2020–2021",
+    organization: "Le Jardin Academy, Kailua, Hawaii",
+    period: "Fall 2020–Spring 2021",
   },
 ];
 
+const education = {
+  program: "Computer Science Undergraduate",
+  school: "University of Tennessee, Knoxville, Tennessee",
+  period: "Fall 2023–Spring 2027",
+};
+
+const getFaviconUrl = (url: string) =>
+  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`;
+
 function LinkRow({ link }: { link: LinkItem }) {
+  const faviconUrl = link.url.startsWith("mailto:")
+    ? getFaviconUrl(`https://${link.value.split("@")[1]}`)
+    : link.url.startsWith("http")
+      ? getFaviconUrl(link.url)
+      : undefined;
+
   return (
     <a
       aria-label={link.label ?? link.value}
-      className="contact-link group"
+      className="contact-link"
       href={link.url}
       rel={link.external ? "noreferrer" : undefined}
       target={link.external ? "_blank" : undefined}
     >
       {link.label ? (
-        <span className="contact-label">
-          {link.icon && (
-            <Image
-              alt=""
-              className={link.iconClassName}
-              height={20}
-              src={link.icon}
-              unoptimized
-              width={20}
-            />
-          )}
-          {link.label}
-        </span>
+        <span className="contact-label">{link.label}</span>
       ) : (
         <span aria-hidden="true" />
       )}
-      <span className="underline-offset-4 group-hover:underline group-focus-visible:underline">{link.value}</span>
+      <span className="inline-flex items-center gap-2 underline underline-offset-4">
+        {faviconUrl && <Image alt="" height={16} src={faviconUrl} unoptimized width={16} />}
+        {link.value}
+      </span>
     </a>
   );
 }
@@ -101,8 +102,7 @@ export default function Home() {
           <section>
             <h2>About</h2>
             <p className="mt-2 ml-4">
-              Computer Science Undergraduate at the University of Tennessee, Knoxville, graduating in Spring 2027. Interests include systems
-              programming, cybersecurity, computer networking, and web development.
+              I am a computer programmer interested in Application Development, Web Development, Cybersecurity, and Computer Networking.
             </p>
           </section>
 
@@ -119,6 +119,17 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <div className="mt-2 ml-4">
+              <div className="flex items-baseline justify-between gap-4">
+                <p className="font-medium">{education.program}</p>
+                <p className="shrink-0 text-right text-sm text-foreground/70">{education.period}</p>
+              </div>
+              <p className="text-sm text-foreground/70">{education.school}</p>
+            </div>
           </section>
 
           <address>
