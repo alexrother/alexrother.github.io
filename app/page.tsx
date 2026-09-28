@@ -45,7 +45,7 @@ const experience = [
     period: "May 2026–Present",
   },
   {
-    role: "Student Intern, IT Assistant",
+    role: "Student Intern, IT Helpdesk",
     organization: "Le Jardin Academy, Kailua, Hawaii",
     period: "Fall 2020–Spring 2021",
   },
@@ -102,7 +102,7 @@ export default function Home() {
           <section>
             <h2>About</h2>
             <p className="mt-2 ml-4">
-              I am a computer programmer interested in Application Development, Web Development, Cybersecurity, and Computer Networking.
+              Computer programmer interested in Cybersecurity, Application Development, Web Development, and Computer Networking.
             </p>
           </section>
 
